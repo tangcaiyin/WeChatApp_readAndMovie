@@ -1,0 +1,10 @@
+<!-- 单个电影模板里引用表示评分的星星模板 -->
+<import src='../stars/stars-temp.wxml' />
+<template name='movieTemplate'>
+	<view class='movie-container'>
+		<image class='movie-img' src='{{coverageUrl}}' catch:tap='onMovieTap' data-movieId='{{movieId}}'></image>
+		<text class='movie-title'>{{title}}</text>
+		<!-- 绑定两项数据 -->
+		<template is='starsTemplate' data="{{stars:stars, score:average}}"></template>
+	</view>
+</template>

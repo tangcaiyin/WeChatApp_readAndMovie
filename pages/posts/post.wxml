@@ -1,0 +1,32 @@
+<!-- 引入模板 -->
+<import src='post-item/post-item-temp.wxml' />
+
+<view>
+    <!-- image 上的每个事件定义到公共父元素上，实现事件委托 -->
+    <swiper catch:tap='onSwiperTap' vertical='' indicator-dots="true" autoplay='true' interval="3000">
+        <swiper-item>
+            <image 
+                src='/images/wx.png' 
+                data-postId='3'>
+            </image>
+        </swiper-item>
+        <swiper-item>
+            <image 
+                src='/images/vr.png' 
+                data-postId='4'>
+            </image>
+        </swiper-item>
+        <swiper-item>
+            <image 
+                src='/images/iqiyi.png' 
+                data-postId='5'>
+            </image>
+        </swiper-item>
+    </swiper>
+    <block wx:for='{{postsDataArr}}' wx:key="">
+    	<!-- 使用is值指定的等同于name值的某个模板，data属性绑定数据，...item 扩展了item对象，模板内绑定对象属性时不需要指定item，直接绑定属性名即可，-->
+    	<view catch:tap='onPostTap' data-postId='{{item.postId}}'>
+    		<template is='postItem' data='{{...item}}'/>
+    	</view>
+   	</block>
+</view>

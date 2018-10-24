@@ -1,0 +1,28 @@
+<!-- 电影页面映入电影列表模板 -->
+<import src='movie-list/movie-list-temp.wxml' />
+<import src='movie-grid/movie-grid-temp.wxml' />
+
+<view class='search'>
+	<icon type='search' size='13' color='#405f80' class='search-img'></icon>
+	<!-- placeholder-class="placeholder" 表示占位符class名定义为placeholder -->
+	<input type="text" placeholder='血战钢锯岭、你的名字' placeholder-class="placeholder" bind:focus='onBindFocus' bindconfirm='onBindChange'/>
+	<image class='xx-img' src='/images/icon/xx.png' bind:tap='onCancelImgTap' wx:if='{{searchPanelShow}}'></image>
+</view>
+
+<view class='container' wx:if='{{containerShow}}'>
+	<view class='movies-template'>
+		<template is='movieListTemplate' data="{{...inTheaters}}"></template>
+	</view>
+	<view  class='movies-template'>
+		<template is='movieListTemplate' data="{{...comingSoon}}"></template>
+	</view>
+	<view class='movies-template'>
+		<template is='movieListTemplate' data="{{...top250}}"></template>
+	</view>
+</view>
+
+<view class='search-panel' wx:if='{{searchPanelShow}}'>
+	<template is='movieGridTemplate' data='{{...searchResult}}'></template>
+</view>
+
+
